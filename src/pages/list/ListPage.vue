@@ -1,15 +1,15 @@
 <template>
-  <div class="home-page">
-    
+  <div class="list-page">
+    <h1>{{title}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  name: 'ListPage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      title: this.$store.state.homeTitle
     }
   }
 }
