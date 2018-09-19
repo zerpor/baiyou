@@ -1,21 +1,11 @@
 <template>
   <div class="home-banner">
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper :options="swiperOption" ref="mySwiper" v-if="bannerShow">
       <!-- slides -->
-      <swiper-slide>
-        <img class="swiper-img" src="../../../../static/images/home-banner-01.jpg" alt="banner img">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="swiper-img" src="../../../../static/images/home-banner-02.jpg" alt="banner img">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="swiper-img" src="../../../../static/images/home-banner-03.jpg" alt="banner img">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="swiper-img" src="../../../../static/images/home-banner-04.jpg" alt="banner img">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="swiper-img" src="../../../../static/images/home-banner-05.jpg" alt="banner img">
+      <swiper-slide v-for="bannerItem in bannerLists" :key="bannerItem.bannerId">
+        <a href="#">
+          <img class="swiper-img" :src="bannerItem.bannerImgUrl" alt="banner img">
+        </a>
       </swiper-slide>
       <!-- Optional controls -->
       <div class="swiper-pagination" slot="pagination"></div>
@@ -26,12 +16,12 @@
 <script>
 export default {
   name: 'HomeBanner',
-  data() {
+  props: {
+    bannerLists: Array
+  },
+  data () {
     return {
       swiperOption: {
-        // some swiper options/callbacks
-        // 所有的参数同 swiper 官方 api 参数
-        // ...
         pagination: '.swiper-pagination',
         preloadImages: false, //不加载全部照片
         loop: true,
@@ -41,11 +31,14 @@ export default {
     }
   },
   computed: {
-    swiper() {
+    swiper () {
       return this.$refs.mySwiper.swiper
+    },
+    bannerShow () {
+      return this.bannerLists.length > 0 ? true : false
     }
   },
-  mounted() {
+  mounted () {
     // current swiper instance
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
     // this.swiper.slideTo(3, 1000, false)
@@ -54,7 +47,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '~@/assets/style/varibles.styl';
+  @import '~@/assets/style/varibles.styl'
+  .home-banner >>> .swiper-pagination-bullets
+    bottom: 5px
   .home-banner >>> .swiper-pagination-bullet
     background-color: #fff
     opacity: 1

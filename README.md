@@ -86,3 +86,12 @@ npm install fastclick --save
 import fastclick from 'fastclick'
 fastclick.attach(document.body)
 ```
+### 请求数据
+```
+npm install axios --save
+```
+
+### 滚动条
+```
+npm install better-scroll --save
+```

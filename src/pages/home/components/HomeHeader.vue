@@ -1,9 +1,11 @@
 <template>
   <header class="home-header">
-    <div class="header-left">
-      <span class="city-name">城市</span>
-      <i class="iconfont icon-xiajiantou"></i>
-    </div>
+    <router-link to="/city">
+      <div class="header-left">
+        <span class="city-name">{{city.name}}</span>
+        <i class="iconfont icon-xiajiantou"></i>
+      </div>
+    </router-link>
     <div class="header-center">
       <i class="iconfont icon-sousuo-m"></i>
       输入您要查询的商品
@@ -16,7 +18,21 @@
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    city () {
+      return this.$store.state.currenyCity
+    }
+  },
+  mounted () {
+    const headerHeight = document.querySelector(".home-header").clientHeight
+    this.$store.commit('GET_HEADER_HEIGHT', headerHeight)
+  },
 }
 </script>
 
@@ -24,13 +40,15 @@ export default {
   @import '~@/assets/style/varibles.styl';
   .home-header
     display: flex
-    height: .78rem
+    height: $headerHeight
     background-color: $themeColor
     color: #ffffff
     .header-left
       width: 1.44rem
-      line-height .78rem
+      line-height $headerHeight
       text-align: center
+      color: #ffffff
+      textWrap()
     .header-center
       flex: 1
       height: .52rem
@@ -45,7 +63,7 @@ export default {
         height: .52rem
     .header-right
       width: 1rem
-      line-height .78rem
+      line-height $headerHeight
       text-align: center
       .iconfont
         font-size: 18px

@@ -10,7 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "better-scroll": "^1.12.6",
     "fastclick": "^1.0.6",
+    "mint-ui": "^2.2.13",
+    "qs": "^6.5.2",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-router": "^3.0.1",
