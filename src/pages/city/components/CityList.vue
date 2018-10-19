@@ -99,6 +99,8 @@ export default {
       if (this.character) {
         const element = this.$refs[this.character][0]
         this.cityScroll.scrollToElement(element)
+      } else {
+        this.cityScroll.scrollTo(0, 0)
       }
     }
   },

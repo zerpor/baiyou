@@ -27,6 +27,7 @@
         >
           {{innerCity.name}}
         </li>
+        <li v-if="isShowResult">没有找到匹配城市，请重新查询</li>
       </ul>
     </div>
   </div>
@@ -50,6 +51,9 @@ export default {
   computed: {
     isContentShow () {
       return this.searchText != "" ? true : false
+    },
+    isShowResult () {
+      return this.searchTesult.length > 0 ? false : true
     }
   },
   methods: {
@@ -58,6 +62,7 @@ export default {
     },
     handleCityClick(city) {
       this.selectedCity(city)
+      this.searchText = ""
     }
   },
   watch: {

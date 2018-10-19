@@ -6,7 +6,8 @@ import FindPage from '@/pages/find/FindPage'
 import CartPage from '@/pages/cart/CartPage'
 import MyPage from '@/pages/my/MyPage'
 import CityPage from '@/pages/city/CityPage'
-
+import LoginPage from '@/pages/login/LoginPage'
+import MessagePage from '@/pages/message/MessagePage'
 
 Vue.use(Router)
 
@@ -48,7 +49,20 @@ export default new Router({
     {
       path: '/city',
       name: 'CityPage',
-      component: CityPage
+      component: CityPage,
+      meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage
+    },
+    {
+      path: '/message',
+      name: 'MessagePage',
+      component: MessagePage
     }
   ]
 })

@@ -10,9 +10,11 @@
       <i class="iconfont icon-sousuo-m"></i>
       输入您要查询的商品
     </div>
-    <div class="header-right">
-      <i class="iconfont icon-xiaoxi"></i>
-    </div>
+    <router-link to="/message">
+      <div class="header-right">
+        <i class="iconfont icon-xiaoxi"></i>
+      </div>
+    </router-link>
   </header>
 </template>
 
@@ -44,11 +46,18 @@ export default {
     background-color: $themeColor
     color: #ffffff
     .header-left
+      display: flex
+      justify-content: center
       width: 1.44rem
       line-height $headerHeight
       text-align: center
       color: #ffffff
-      textWrap()
+      .city-name
+        display: block
+        max-width: 1.1rem
+        textWrap()
+      .iconfont
+        display: block
     .header-center
       flex: 1
       height: .52rem
@@ -67,4 +76,5 @@ export default {
       text-align: center
       .iconfont
         font-size: 18px
+        color: #fff
 </style>

@@ -62,7 +62,7 @@ export default {
       this.cityData = this.$store.state.cityData
     }
   },
-  beforeDestroy () {
+  activated () {
     this.character = ""
   },
   components: {

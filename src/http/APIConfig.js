@@ -6,7 +6,11 @@ const APIModule = {
   CITY_CONFIG: {
     url: '/api/city',
     method: 'get'
-  } 
+  },
+  MESSAGE_CONFIG: {
+    url: '/api/message',
+    method: 'get'
+  }
 }
 const APIConfig = {...APIModule}
 

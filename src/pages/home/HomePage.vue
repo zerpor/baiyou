@@ -7,6 +7,7 @@
     <home-rush-buy :lbGoods="lbGoods"></home-rush-buy>
     <home-benefit v-if="showBenefit" :benefit="benefit"></home-benefit>
     <home-like :likeGoods="likeGoods"></home-like>
+    <home-footer></home-footer>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import HomeHeadline from './components/HomeHeadline'
 import HomeRushBuy from './components/HomeRushBuy'
 import HomeBenefit from './components/HomeBenefit'
 import HomeLike from './components/HomeLike'
+import HomeFooter from './components/HomeFooter'
 import Axios from './../../http/httpService.js'
 import APIConfig from './../../http/APIConfig.js'
 export default {
@@ -44,7 +46,7 @@ export default {
       return Axios.get(httpConfig)
     }
   },
-  mounted () {
+  created () {
     let _this = this
     this.getData().then(function(result){
       console.log(result)
@@ -58,8 +60,6 @@ export default {
         _this.benefit = homeData.benefit
         _this.likeGoods = homeData.likeGoods
       }
-    },function(error){
-      console.log(error)
     })
   },
   components: {
@@ -69,7 +69,8 @@ export default {
     HomeHeadline,
     HomeRushBuy,
     HomeBenefit,
-    HomeLike
+    HomeLike,
+    HomeFooter
   }
 }
 </script>
